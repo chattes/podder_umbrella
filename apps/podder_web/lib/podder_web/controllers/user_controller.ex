@@ -14,15 +14,24 @@ defmodule PodderWeb.UserController do
     with {:ok, pid} <- PodderSup.log_user(user_params) do
       conn
       |> put_status(:created)
-      |> put_resp_header("location", Routes.user_path(conn, :show, user_params))
+      |> put_resp_header("location", Routes.user_path(conn, :show, 200))
       |> render("show.json", user: user_params)
     end
   end
 
-  # def show(conn, %{"id" => id}) do
-  #   user = Podder.get_user!(id)
-  #   render(conn, "show.json", user: user)
-  # end
+  def show(conn, %{"id" => user}) do
+    response =
+      Podder.User.PodcastPreferences.whereis(name: user)
+      |> Podder.User.PodcastPreferences.get_preferences()
+      |> IO.inspect()
+
+    render(conn, "show.json", user: response)
+  end
+
+  def show(conn, %{"query" => query}) do
+    # Podder.User.PodcastPreferences.
+    json(conn, %{"data" => query})
+  end
 
   # def update(conn, %{"id" => id, "user" => user_params}) do
   #   user = Podder.get_user!(id)

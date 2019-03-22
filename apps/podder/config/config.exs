@@ -4,4 +4,7 @@
 # the umbrella root.
 use Mix.Config
 
+config :podder,
+  podcast_base_url: "https://listennotes.p.rapidapi.com/api/v1"
+
 import_config "#{Mix.env()}.exs"

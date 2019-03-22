@@ -3,3 +3,5 @@
 # and only for organization purposes. All other config goes to
 # the umbrella root.
 use Mix.Config
+
+import_config "dev.secret.exs"

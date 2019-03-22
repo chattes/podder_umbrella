@@ -8,5 +8,6 @@ defmodule PodderWeb.Router do
   scope "/api", PodderWeb do
     pipe_through :api
     resources "/users", UserController, except: [:new, :edit]
+    get "/podcasts/:query", UserController, :show
   end
 end

@@ -11,6 +11,6 @@ defmodule PodderWeb.UserView do
   end
 
   def render("user.json", %{user: user}) do
-    %{id: user, user_name: user}
+    %{id: user, data: user}
   end
 end

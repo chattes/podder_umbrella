@@ -10,7 +10,7 @@ defmodule Podder.ListenProvider.API do
   )
 
   defp add_headers, do: ["X-RapidAPI-Key": Application.get_env(:podder, :api_key)]
-  defp process_url(url), do: Application.get_env(:podder, :podcast_base_url) <> url
+  def process_url(url), do: Application.get_env(:podder, :podcast_base_url) <> url
 
   def convert_map_keys_to_atoms({k, v}) when is_map(v) do
     {String.to_atom(k), Enum.map(v, &convert_map_keys_to_atoms(&1)) |> Map.new()}
