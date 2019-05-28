@@ -12,7 +12,7 @@ defmodule Podder.DynamicSupervisor do
     DynamicSupervisor.init(strategy: :one_for_one)
   end
 
-  def start_work(name), do: {:ok, pid} = start_podcast_server(name)
+  def start_work(name), do: start_podcast_server(name)
   def log_user(user_name), do: {:ok, pid} = start_user_server(user_name)
 
   defp start_podcast_server(name) do

@@ -36,7 +36,7 @@ defmodule Podder.ListenProvider.API do
     end
   end
 
-  defp process_response(_), do: {:error, "Cannot Fetch Podcasts"}
+  defp process_response(_, fields), do: {:error, "Cannot Fetch Podcasts"}
 
   defp send_request(url, headers) do
     case HTTPoison.get(url, headers) do

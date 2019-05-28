@@ -9,5 +9,6 @@ defmodule PodderWeb.Router do
     pipe_through :api
     resources "/users", UserController, except: [:new, :edit]
     get "/podcasts/:query", UserController, :show
+    resources "/podcasts", PodcastController, except: [:new, :edit]
   end
 end

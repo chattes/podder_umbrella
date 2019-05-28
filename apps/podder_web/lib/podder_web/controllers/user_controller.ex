@@ -29,15 +29,16 @@ defmodule PodderWeb.UserController do
   end
 
   def show(conn, %{"query" => query}) do
-    # Podder.User.PodcastPreferences.
-    json(conn, %{"data" => query})
+    response = Podder.Utils.Podcasts.search_podcasts(query: query)
+    json(conn, %{"data" => response})
   end
 
   # def update(conn, %{"id" => id, "user" => user_params}) do
   #   user = Podder.get_user!(id)
-
+  #
   #   with {:ok, %User{} = user} <- Podder.update_user(user, user_params) do
-  #     render(conn, "show.json", user: user)
+  #     # render(conn, "show.json", user: user)
+  #     json(conn, %{"data" => user})
   #   end
   # end
 
